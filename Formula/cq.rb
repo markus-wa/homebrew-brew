@@ -8,13 +8,13 @@ class Cq < Formula
 
   if OS.linux?
     @@binary = "cq-native-linux"
-    sha256 "d61bba55bb974dc3b1d845607fa4864a941487ecae967ff5ba0ae702dae16cd8"
+    sha256 "13e80ae52d3f1e73495dd94ce62948321c061f92a29d43320d50f589cf43fdac"
   else
     @@binary = "cq-native-macos"
-    sha256 "b6dc057299b02fe39ecb63b1ebe4044ae66370b6150abf15ba2561a43fcc9323"
+    sha256 "32f26c916a8323621e6a993a0569dd95da21a519bbeda9dcf77ad3d71494d4c0"
   end
 
-  url "https://github.com/markus-wa/cq/releases/download/2023.10.18-18.12/#{@@binary}"
+  url "https://github.com/markus-wa/cq/releases/download/2023.11.30-14.56/#{@@binary}"
 
   def install
     bin.install @@binary => "cq"
