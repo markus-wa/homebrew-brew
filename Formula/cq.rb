@@ -2,19 +2,19 @@ class Cq < Formula
 
   desc "Clojure Command-line Data Processor for JSON, YAML, EDN, XML and more"
   homepage "https://github.com/markus-wa/cq"
-  version "2024.02.13-23.14"
+  version "2024.06.24-12.10"
 
   @@binary = ""
 
   if OS.linux?
     @@binary = "cq-native-linux"
-    sha256 "c5dcb818ec73b0a76fba1989f6def54759d781e568d908ba44bee7629cb29738"
+    sha256 "5440ee0ec7672f6260eebdb7d2d7b8d383c33d690e0d830f5a09d02e0f6b71f5"
   else
     @@binary = "cq-native-macos"
-    sha256 "a1fa09784c1fb8e31e13a29e250d8e0ac678d5462190e3931420286eba7b6666"
+    sha256 "99a361c67081818666cf78719734e5edc7efd7a2e56561d853b900a6d063af23"
   end
 
-  url "https://github.com/markus-wa/cq/releases/download/2024.02.13-23.14/#{@@binary}"
+  url "https://github.com/markus-wa/cq/releases/download/2024.06.24-12.10/#{@@binary}"
 
   def install
     bin.install @@binary => "cq"
