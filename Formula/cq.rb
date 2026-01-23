@@ -1,23 +1,28 @@
 class Cq < Formula
-
   desc "Clojure Command-line Data Processor for JSON, YAML, EDN, XML and more"
   homepage "https://github.com/markus-wa/cq"
-  version "2024.06.24-12.10"
-
-  @@binary = ""
+  version "2026.01.09-17.19"
 
   if OS.linux?
-    @@binary = "cq-native-linux"
-    sha256 "5440ee0ec7672f6260eebdb7d2d7b8d383c33d690e0d830f5a09d02e0f6b71f5"
+    if Hardware::CPU.arm?
+      url "https://github.com/markus-wa/cq/releases/download/2026.01.09-17.19/cq-native-linux-arm64"
+      sha256 "e30198a5f55747d6bf2fdb786f92a9e96d87f2a0306964d892f0aa61b9b99274"
+    else
+      url "https://github.com/markus-wa/cq/releases/download/2026.01.09-17.19/cq-native-linux-x86_64"
+      sha256 "9a59ad0ea4b2c4187fee86e8e6955f83774ca46cd329237a500a0375babf63ac"
+    end
   else
-    @@binary = "cq-native-macos"
-    sha256 "99a361c67081818666cf78719734e5edc7efd7a2e56561d853b900a6d063af23"
+    url "https://github.com/markus-wa/cq/releases/download/2026.01.09-17.19/cq-native-macos"
+    sha256 "307f6a62dcd74f1c095ffe25a07f6b62eb772d72c12c6475e06bfd4a3ea9d249"
   end
-
-  url "https://github.com/markus-wa/cq/releases/download/2024.06.24-12.10/#{@@binary}"
 
   def install
-    bin.install @@binary => "cq"
+    if OS.linux? && Hardware::CPU.arm?
+      bin.install "cq-native-linux-arm64" => "cq"
+    elsif OS.linux?
+      bin.install "cq-native-linux-x86_64" => "cq"
+    else
+      bin.install "cq-native-macos" => "cq"
+    end
   end
-
 end
